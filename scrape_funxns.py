@@ -4,8 +4,9 @@ def get_article_links(browser):
     '''Get article links from query page.
         Returns a list of urls.'''
     sel = 'dt a'
-    return browser.find_elements_by_css_selector(sel)
-   
+    links = browser.find_elements_by_css_selector(sel)
+    urls = [link.get_attribute('href') for link in links]
+    return urls
 
     
 def get_data_from_article(browser):
@@ -25,3 +26,8 @@ def get_data_from_article(browser):
 def next_query_page():
     pass
 
+def scrape_articles_of_page(browser, links):
+    for link in links:
+        browser.get(link)
+        time.sleep(2 + random.random()*10)
+        yield get_data_from_article(browser)
