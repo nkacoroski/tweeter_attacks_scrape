@@ -25,9 +25,6 @@ def get_data_from_article(browser):
     data['text'] = data['text'][text_start_index:]
     return data
 
-def next_query_page():
-    pass
-
 def scrape_articles_of_page(browser, links):
     for link in links:
         browser.get(link)
