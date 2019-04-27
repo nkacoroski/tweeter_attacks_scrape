@@ -1,4 +1,6 @@
 import requests
+import time
+import random
 
 def get_article_links(browser):
     '''Get article links from query page.
